@@ -1,0 +1,16 @@
+{
+  "name": "frontend-docs",
+  "version": "1.0.0",
+  "description": "The Frontend Basic Coding Style Of Janus",
+  "main": "index.js",
+  "scripts": {
+    "docs": "vuepress dev docs",
+    "build": "vuepress build docs",
+    "test": "test"
+  },
+  "author": "jinsheng",
+  "license": "ISC",
+  "devDependencies": {
+    "vuepress": "^1.9.7"
+  }
+}
