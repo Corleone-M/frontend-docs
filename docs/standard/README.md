@@ -1,3 +1,15 @@
+# 前端规范参考
+
+[腾讯TG](https://tgideas.qq.com/doc/frontend/)
+
+[京东 凹凸实验室](https://guide.aotu.io/index.html)
+
+[爱彼迎 Airbnb](https://github.com/BingKui/javascript-zh)
+
+[百度规范](https://github.com/ecomfe/spec/blob/master/javascript-style-guide.md)
+
+[ESLint Rules](https://eslint.bootcss.com/docs/rules/)
+
 # 通用
 
 ### 1. 目录(文件夹)命名[强制]
