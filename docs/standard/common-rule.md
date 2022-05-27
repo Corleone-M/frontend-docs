@@ -578,7 +578,7 @@
     }
     ```
 
-## 类型转换和强制类型转换
+## 类型转换
 
   - [22.2](#coercion--strings)  字符类型： eslint: [`no-new-wrappers`](https://eslint.org/docs/rules/no-new-wrappers)
 
@@ -625,6 +625,7 @@
   - [22.6](#coercion--booleans) 布尔类型： eslint: [`no-new-wrappers`](https://eslint.org/docs/rules/no-new-wrappers)
 
     ```javascript
+
     const age = 0;
 
     // bad
@@ -635,4 +636,97 @@
 
     // best
     const hasAge = !!age;
+
     ```
+
+## 语义化API
+
+当我们设计和使用一些API的时候，语义化常常是最容易忽略的地方。例如Array.filter，其设计职能具有非常强的针对性，就是一个过滤器，
+但是我们无法限制部分人把它当成forEach使用，这会造成语义和逻辑的极大差异，影响阅读和增加缺陷风险。  
+
+
+根据开发经验，滥用最严重的属map，经常被当做forEach使用。在map的回调中修改原数组，本来是一个糟糕的副作用，如果利用这种副作用
+去开发功能，会给以后的优化和维护增加很大成本。但这种问题更多是靠自觉性和代码review。
+
+**1. 原生API滥用<font face="黑体" color=orange>[谨慎]</font>**
+
+```js
+
+const personList = [
+  {
+    name: 'allen', 
+    age: 18
+  },
+  { 
+    name: 'jason',
+    age: 22
+  }
+];
+
+// personList.filter(item => item.info = `${item.name}-${item.age}`)
+const ageList =  personList.map(item => {
+  item.info = `${item.name}-${item.age}`;
+  return item.age;
+});
+
+```
+
+**2. 非语义化API<font face="黑体" color=orange>[谨慎]</font>**
+
+在模块或者组件内部，设计的一些提供给外部使用的API，命名过于模糊，如getDta等。
+
+```js
+
+// 不推荐
+api.getData = function (params = {}) {
+  return BaseService.getRequest('api/pmf/v1/affair/getUserAffairLog', params);
+};
+
+```
+
+## 语义化命名
+
+语义化命名涉及目录、组件、变量、方法、属性、路由等等，任何一种命名如果和逻辑差异过大，都会给人造成逻辑混乱和理解困扰。
+文不对题的情况毕竟相对少见，而最常见的问题，其实是模糊的或者没有具体语义的命名方式，下面大致举一些例子。
+
+**1. 组件命名<font face="黑体" color=orange>[谨慎]</font>**
+
+````
+// bad
+components
+├─ MyComponent.vue
+├─ MyMenu.vue
+├─ TodoList.vue
+
+````
+
+**2. 方法命名<font face="黑体" color=orange>[谨慎]</font>**
+
+````js
+// bad
+export default {
+  methods: {
+    toGo(){
+      // ...
+    }
+  }
+}
+
+````
+
+**2. 数据命名<font face="黑体" color=orange>[谨慎]</font>**
+
+如果组件非常简单，影响不大，如果组件比较复杂，数据较多，则应该语义化命名。
+
+````js
+
+// bad
+export default {
+  data () {
+    return {
+      list: []
+    }
+  }
+}
+
+````
