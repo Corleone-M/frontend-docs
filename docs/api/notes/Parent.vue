@@ -51,7 +51,7 @@ export default {
       this.demoData.list.push({
         id: 777,
         info: {
-          name: 'amani',
+          name: 'Amy',
           age: 99,
         },
         type: 'person',
