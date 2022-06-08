@@ -6,11 +6,12 @@
   "scripts": {
     "docs": "vuepress dev docs",
     "build": "vuepress build docs",
+    "build:static": "vuepress build docs && node replace.js",
     "test": "test"
   },
   "author": "jinsheng",
   "license": "ISC",
   "devDependencies": {
-    "vuepress": "^1.9.7"
+    "vuepress": "^1.8.2"
   }
 }

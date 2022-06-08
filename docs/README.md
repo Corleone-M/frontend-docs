@@ -2,9 +2,9 @@
 home: true
 heroImage: /janus02.png
 heroText: Front-End Coding Guidelines
-tagline: Go to Docs.
-actionText: 前端开发文档 →
-actionLink: /zh/guide/
+tagline: 第 1 版（草案）
+actionText: 前端开发手册 →
+actionLink: /standard/genneral
 features:
 - title: Template
   details: 现代前端开发，直接编写html的场景已经很少见，但对各类模板的规范约定，同样重要
